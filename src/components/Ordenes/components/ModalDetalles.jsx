@@ -134,7 +134,7 @@ export default function ModalDetalles({ modal, data, setData, handleCloseModal }
                             sm={12}
                             xs={12}
                         >
-                            <Grid container spacing={2} >
+                            <Grid container spacing={2} style={{padding: 10}} >
                                 <Grid item xs={12} className={classes.modalTittle}>
                                     CANTIDAD
                                 </Grid>
@@ -142,13 +142,13 @@ export default function ModalDetalles({ modal, data, setData, handleCloseModal }
                                     <>
                                         {Object.keys(quantities).map(cantidad => (
                                             <>
-                                                <Grid item xs={9}>
+                                                <Grid item xs={7} sm={9} md={9}>
                                                     {cantidad}
                                                 </Grid>
-                                                <Grid item xs={1}>
+                                                <Grid item xs={1} sm={1} md={1}>
                                                     {quantities[cantidad]}
                                                 </Grid>
-                                                <Grid item xs={1}>
+                                                <Grid item xs={2} sm={1} md={1}>
                                                     <IconButton disabled={!editMode} onClick={() => {
                                                         setQuantities({
                                                             ...quantities,
@@ -158,7 +158,7 @@ export default function ModalDetalles({ modal, data, setData, handleCloseModal }
                                                         <AddCircleOutlineIcon />
                                                     </IconButton>
                                                 </Grid>
-                                                <Grid item xs={1}>
+                                                <Grid item xs={2} sm={1} md={1}>
                                                     <IconButton disabled={!editMode} onClick={() => {
                                                         if (quantities[cantidad] > 1) {
                                                             setQuantities({

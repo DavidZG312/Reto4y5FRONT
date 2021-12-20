@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
-import { Button, Grid, IconButton, InputAdornment, TextField, Paper } from '@mui/material'
+import { Button, Grid, IconButton, InputAdornment, TextField, Paper, useMediaQuery } from '@mui/material'
 // import axiosClient from '../config/AxiosClient'
 import { useDispatch, useSelector } from 'react-redux';
 import { useSnackbar } from 'notistack';
 
 import useStyles from '../assets/css/js/styles'
+import { useTheme } from '@mui/material/styles';
 
 import { loginAction } from '../redux/actions/AuthAction'
 
@@ -45,6 +46,11 @@ export default function Login() {
 
     //Styles
     const classes = useStyles();
+    const theme = useTheme();
+
+    const matches1 = useMediaQuery(theme.breakpoints.down('md'));
+    const matches2 = useMediaQuery(theme.breakpoints.only('xs'));
+    const matches3 = useMediaQuery(theme.breakpoints.down('sm'));
 
     var items = [
         {

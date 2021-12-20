@@ -19,6 +19,10 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { useNavigate } from 'react-router-dom';
 
+import useModal from '../hooks/useModal'
+
+import ModalPerfil from '../components/Perfil/ModalPerfil'
+
 const ResponsiveAppBar = () => {
 
 	// Dispatch Instance
@@ -26,6 +30,9 @@ const ResponsiveAppBar = () => {
 
 	// Redux State Extraction
 	const { user } = useSelector((state) => state.auth);
+
+	//Hooks
+	const [modal, openModal, closeModal] = useModal();
 
 	//Router
 	const navigate = useNavigate();
@@ -106,6 +113,9 @@ const ResponsiveAppBar = () => {
 			case "logout":
 				cerrarSesion()
 				break;
+			case "profile":
+				openModal()
+				break;
 
 			default:
 				break;
@@ -120,6 +130,13 @@ const ResponsiveAppBar = () => {
 
 	return (
 		<div style={{ display: 'flex' }} id="title">
+			{modal && (
+				<ModalPerfil
+					modal={modal}
+					handleCloseModal={closeModal}
+				/>
+			)}
+
 			<CssBaseline />
 			<AppBar position="static"
 				style={{
