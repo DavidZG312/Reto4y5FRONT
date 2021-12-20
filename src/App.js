@@ -1,24 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Login from './pages/Login'
+import Register from './pages/Register'
+import Home from './pages/Home'
+import Usuarios from './pages/Usuarios'
+import Productos from './pages/Productos'
+import Ordenes from './pages/Ordenes'
+
+import './styles/global.css';
+
+// Notification
+import { SnackbarProvider } from 'notistack';
+
+// Store
+import store from './redux/store';
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <SnackbarProvider
+        maxSnack={3}
+        preventDuplicate
+      >
+        <Router>
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/usuarios" element={<Usuarios />} />
+            <Route path="/productos" element={<Productos />} />
+            <Route path="/ordenes" element={<Ordenes />} />
+          </Routes>
+        </Router>
+      </SnackbarProvider>
+    </Provider >
+
   );
 }
 
