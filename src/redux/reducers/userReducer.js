@@ -7,8 +7,6 @@ import {
 const initialState = {
     usersArray: [],
     initialStateUsers: [],
-
-    // correoExiste: false
 };
 
 export default function userReducer(state = initialState, action) {
